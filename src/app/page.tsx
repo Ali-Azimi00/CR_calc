@@ -6,14 +6,22 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          // className="dark:invert"
-          src={images.logo}
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
+
+        <div className="border border-6 border-foreground border-double overflow-hidden h-59 w-54 "
+          style={{ display: 'flex' }}
+        >
+          <Image
+            // className="dark:invert" 
+            style={{ objectFit: 'cover' }}
+            src={images.logo}
+            alt="app logo"
+            // width={200}
+            // height={38}
+            priority
+
+          />
+        </div>
+
         <h1 className="font-bold text-3xl text-center"
           style={{ color: '#a1251d' }}
         >Welcome Dungeon Master</h1>

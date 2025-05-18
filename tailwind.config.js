@@ -11,7 +11,7 @@ module.exports = {
                 tert: '#ffffff',
                 exPrime: '#161622',
                 exSec: {
-                    DEFAULT: "#FF9C01",
+                    DEFAULT: "#a1251d",
                     100: "#FF9001",
                     200: "#FF8E01",
                 },
