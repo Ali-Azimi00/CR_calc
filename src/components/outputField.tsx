@@ -11,7 +11,7 @@ const outputField: React.FC<OutFieldProps> = ({ value, individualStyles }) => {
 
     return (
         <div
-            className={`h-6 w-[40%] bg-gray-100 border-1 border-red-500 px-2 ${individualStyles}`}
+            className={`h-6 w-[50%] bg-gray-100 border-1 border-red-500 px-2 ${individualStyles}`}
         >
             {value}
         </div>

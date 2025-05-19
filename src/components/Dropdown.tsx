@@ -18,7 +18,7 @@ export default function Dropdown({ options }: DropdownProps) {
     const toggleDropdown = () => setIsOpen(!isOpen);
 
     return (
-        <div className='h-6 w-[40%]'>
+        <div className='h-6 w-[50%]'>
             <div className="relative text-left ">
 
                 <button

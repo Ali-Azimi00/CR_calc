@@ -12,7 +12,7 @@ const Defensive = () => {
             </div>
             <div className="space-y-2">
 
-                <div className="flex flex-row justify-around">
+                <div className="flex flex-row justify-around gap-1">
                     <Dropdown options={[
                         { label: 'option1' },
                         { label: 'option2' }
@@ -20,17 +20,17 @@ const Defensive = () => {
                     <OutputField value="output1" />
                 </div>
 
-                <div className="flex flex-row justify-around">
+                <div className="flex flex-row justify-around gap-1">
                     <InputField placeholder="input1" />
                     <OutputField value="output1" />
                 </div>
 
-                <div className="flex flex-row justify-around">
+                <div className="flex flex-row justify-around gap-1">
                     <InputField placeholder="input1" />
                     <OutputField value="output1" />
                 </div>
 
-                <div className="flex flex-row justify-around">
+                <div className="flex flex-row justify-around gap-1">
                     <InputField placeholder="input1" />
                     <OutputField value="output1" />
                 </div>
