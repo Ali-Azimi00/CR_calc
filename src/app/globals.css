@@ -45,7 +45,7 @@ body {
 .crTracker{
   border-radius: 100%;
   border: 2px, solid, white;
-  position:absolute;
+  position:fixed;
   top:-2rem;
   right:-2rem;
   height: 8rem;
@@ -60,7 +60,6 @@ body {
   padding-right: 1rem;
   justify-items: center;
   align-content: center;
-  
   
 }
 

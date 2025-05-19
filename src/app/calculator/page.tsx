@@ -19,9 +19,6 @@ const Calculator = () => {
                 <Attributes />
             </div>
 
-
-
-
             <div className="flex flex-row gap-1 justify-around items-center">
                 <div className="mb-4 w-full">
                     <Defensive />
