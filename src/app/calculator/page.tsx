@@ -1,52 +1,34 @@
-import InputField from "@/components/inputField"
-import OutputField from "@/components/outputField"
+import Attributes from "@/components/Attributes"
+import Offensive from "@/components/Offensive"
+import Defensive from "@/components/Defensive"
 
-
+//rafce
 const Calculator = () => {
 
     return (
         <div className="">
+
             <div className="crTracker ">
                 <div>
                     CR: ##
                 </div>
             </div>
 
-            <div className="justify-center items-center card">
-                <div className="border-2 border-gray-700  mb-2  text-center">
-                    Attributes
-                </div>
-                <div className="space-y-2">
-
-                    <div className="flex flex-row justify-around">
-                        <InputField placeholder="input1" />
-                        <OutputField value="output1" />
-                    </div>
-
-                    <div className="flex flex-row justify-around">
-                        <InputField placeholder="input1" />
-                        <OutputField value="output1" />
-                    </div>
-
-                    <div className="flex flex-row justify-around">
-                        <InputField placeholder="input1" />
-                        <OutputField value="output1" />
-                    </div>
-
-                    <div className="flex flex-row justify-around">
-                        <InputField placeholder="input1" />
-                        <OutputField value="output1" />
-                    </div>
-
-
-                </div>
+            <div className="mb-4">
+                <Attributes />
             </div>
+
+            <div className="mb-4">
+                <Defensive />
+            </div>
+
+            <div className="mb-4">
+                <Offensive />
+            </div>
+
         </div>
 
-
     )
-
-
 }
 
 export default Calculator
