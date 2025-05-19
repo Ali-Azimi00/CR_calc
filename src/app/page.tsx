@@ -7,7 +7,7 @@ export default function Home() {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
 
-        <div className="border border-6 border-foreground border-double overflow-hidden h-59 w-54 "
+        <div className="border-6 border-foreground border-double overflow-hidden h-59 w-54 "
           style={{ display: 'flex' }}
         >
           <Image
@@ -24,7 +24,9 @@ export default function Home() {
 
         <h1 className="font-bold text-3xl text-center"
           style={{ color: '#a1251d' }}
-        >Welcome Dungeon Master</h1>
+        >
+          Welcome Dungeon Master
+        </h1>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row bg-black-500">
           <Link

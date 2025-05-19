@@ -31,5 +31,38 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
     background-color: var(--background);
+  padding: 10%;
+  padding-top: 5rem;
+
+}
+
+.crTracker{
+  border-radius: 100%;
+  border: 2px, solid, white;
+  position:absolute;
+  top:-2rem;
+  right:-2rem;
+  height: 8rem;
+  width: 8rem;
+
+  color:white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  background-color: #a1251d;
+
+  padding-top: 1rem;
+  padding-right: 1rem;
+  justify-items: center;
+  align-content: center;
+  
+  
+}
+
+
+.card{
+  padding: 5%;
+  box-shadow: white;
+  border:solid;
+  border-color: white;
 
 }
