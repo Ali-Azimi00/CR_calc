@@ -20,7 +20,7 @@ const InputAttributes: React.FC<InputFieldProps> = ({ placeholder, individualSty
                     SAVE
                 </div>
             </div>
-            <div className='flex flex-row'>
+            <div className='flex flex-row justify-end'>
                 <div className={`h-6 w-14 bg-gray-400  px-2 ${individualStyles}`}>
                     {placeholder}
                 </div>

@@ -24,27 +24,24 @@ const Attributes = () => {
                 Attributes
             </div>
 
-            <div className='md:flex md:gap-4  '>
+            <div className='flex flex-wrap 
+            justify-center 
+            md:justify-around 
+            gap-1'>
                 <div className="mb-4" >
                     <InputAttributes placeholder='STR' />
                 </div>
                 <div className="mb-4 " >
                     <InputAttributes placeholder='DEX' />
                 </div>
-            </div>
 
-
-            <div className=' md:flex md:gap-4  '>
                 <div className=" mb-4" >
                     <InputAttributes placeholder='CON' />
                 </div>
                 <div className="mb-4 " >
                     <InputAttributes placeholder='INT' />
                 </div>
-            </div>
 
-
-            <div className=' md:flex md:gap-4  '>
                 <div className="mb-4" >
                     <InputAttributes placeholder='WIS' />
                 </div>
@@ -52,6 +49,9 @@ const Attributes = () => {
                     <InputAttributes placeholder='CHA' />
                 </div>
             </div>
+
+
+
 
 
 
