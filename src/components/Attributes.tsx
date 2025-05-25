@@ -1,41 +1,60 @@
 import React from 'react'
-import InputField from './inputField'
-import OutputField from './outputField'
-import Dropdown from './Dropdown'
+import InputAttributes from './InputAttributes'
+// import OutputField from './outputField'
+// import Dropdown from './Dropdown'
 
 const Attributes = () => {
+
+    const attributeNames = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA']
+
+    const renderAttributeFields = () => {
+        return (
+            attributeNames.map((att) => (
+                <div className="mb-4 flex flex-1" key={att}>
+                    <InputAttributes placeholder={att} />
+                </div>
+            ))
+        )
+    }
+
+
     return (
         <div className="card">
             <div className="border-2 border-gray-700  mb-2  text-center">
                 Attributes
             </div>
-            <div className="space-y-2 ">
 
-                <div className="flex flex-row justify-around gap-1">
-                    <Dropdown options={[
-                        { label: 'option1' },
-                        { label: 'option2' }
-                    ]} />
-                    <OutputField value="output1" />
+            <div className='md:flex md:gap-4  '>
+                <div className="mb-4" >
+                    <InputAttributes placeholder='STR' />
                 </div>
-
-                <div className="flex flex-row justify-around gap-1">
-                    <InputField placeholder="input1" />
-                    <OutputField value="output1" />
+                <div className="mb-4 " >
+                    <InputAttributes placeholder='DEX' />
                 </div>
-
-                <div className="flex flex-row justify-around gap-1">
-                    <InputField placeholder="input1" />
-                    <OutputField value="output1" />
-                </div>
-
-                <div className="flex flex-row justify-around gap-1">
-                    <InputField placeholder="input1" />
-                    <OutputField value="output1" />
-                </div>
-
-
             </div>
+
+
+            <div className=' md:flex md:gap-4  '>
+                <div className=" mb-4" >
+                    <InputAttributes placeholder='CON' />
+                </div>
+                <div className="mb-4 " >
+                    <InputAttributes placeholder='INT' />
+                </div>
+            </div>
+
+
+            <div className=' md:flex md:gap-4  '>
+                <div className="mb-4" >
+                    <InputAttributes placeholder='WIS' />
+                </div>
+                <div className="mb-4" >
+                    <InputAttributes placeholder='CHA' />
+                </div>
+            </div>
+
+
+
         </div>
     )
 }
