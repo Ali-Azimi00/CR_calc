@@ -10,7 +10,7 @@ const Attributes = () => {
     const renderAttributeFields = () => {
         return (
             attributeNames.map((att) => (
-                <div className="mb-4 flex flex-1" key={att}>
+                <div className="mb-4" key={att}>
                     <InputAttributes placeholder={att} />
                 </div>
             ))
@@ -28,32 +28,8 @@ const Attributes = () => {
             justify-center 
             md:justify-around 
             gap-1'>
-                <div className="mb-4" >
-                    <InputAttributes placeholder='STR' />
-                </div>
-                <div className="mb-4 " >
-                    <InputAttributes placeholder='DEX' />
-                </div>
-
-                <div className=" mb-4" >
-                    <InputAttributes placeholder='CON' />
-                </div>
-                <div className="mb-4 " >
-                    <InputAttributes placeholder='INT' />
-                </div>
-
-                <div className="mb-4" >
-                    <InputAttributes placeholder='WIS' />
-                </div>
-                <div className="mb-4" >
-                    <InputAttributes placeholder='CHA' />
-                </div>
+                {renderAttributeFields()}
             </div>
-
-
-
-
-
 
         </div>
     )
