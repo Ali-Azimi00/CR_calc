@@ -35,11 +35,15 @@ const InputAttributes: React.FC<InputFieldProps> = ({ placeholder, individualSty
                 }>
                     0
                 </div>
-
-                <div className={`h-6 w-14 bg-gray-400 px-2 border-1 border-black
-                    border-r
+                <div className={`h-6 w-14 bg-gray-400 pl-2 border-1 border-black
+                    border-r-0 flex justify-between rounded-tr-lg
                     ${individualStyles}`}>
-                    00
+                    <div className=''>
+                        00
+                    </div>
+                    <div className='relative'>
+                        <input type="checkbox" className="absolute border-none top-0 right-0 " />
+                    </div>
                 </div>
             </div>
 

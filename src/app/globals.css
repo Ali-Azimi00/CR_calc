@@ -71,3 +71,7 @@ body {
   border-color: white;
 
 }
+
+.borderCheck{
+  border: 2px solid red;
+}
