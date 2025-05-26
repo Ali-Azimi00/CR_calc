@@ -21,31 +21,58 @@ const InputAttributes: React.FC<InputFieldProps> = ({ placeholder, individualSty
                 </div>
             </div>
             <div className='flex flex-row justify-end'>
-                <div className={`h-6 w-14 bg-gray-400  px-2 ${individualStyles}`}>
+                <div className={`h-6 w-14 bg-gray-400 px-2 border-1 border-black
+                    ${individualStyles}`
+                }>
                     {placeholder}
                 </div>
-                <input
-                    className={`h-6 w-14 bg-gray-100    px-2 ${individualStyles}`}
-                    placeholder={'00'}>
-                </input>
-                <div className={`h-6 w-14 bg-gray-400   px-2 ${individualStyles}`}>
-                    00
+                <input className={`h-6 w-14 bg-gray-100 px-2 border-1 border-black
+                        ${individualStyles}`}
+                    placeholder={'00'}
+                />
+                <div className={`h-6 w-14 bg-gray-400 px-2 border-1 border-black
+                    ${individualStyles}`
+                }>
+                    0
                 </div>
 
-                <div className={`h-6 w-14 bg-gray-400   px-2 ${individualStyles}`}>
+                <div className={`h-6 w-14 bg-gray-400 px-2 border-1 border-black
+                    border-r
+                    ${individualStyles}`}>
                     00
                 </div>
             </div>
 
-            <div className='flex flex-row  opacity-75  justify-end'>
-                <div className={`bg-gray-400  h-5 w-24 px-2 rounded-bl-lg text-sm text-black justify-end ${individualStyles}`}>
-                    skill: +<span className='text-green-900'>00</span>
-                </div>
+            {(placeholder === 'CON') ?
+                (<div className='flex flex-row  opacity-75  justify-end'>
+                    <div className={`bg-gray-400  h-5 w-42 px-4 rounded-bl-lg 
+                    text-sm text-gray-700 justify-end 
+                    ${individualStyles}`}>
+                        <div className='flex flex-row justify-between'>
+                            <div>
+                                HP
+                            </div>
+                            <div>
+                                000(00d + 000)
+                            </div>
+                        </div>
+                    </div>
+                </div>)
+                :
+                (<div className='flex flex-row  opacity-75  justify-end'>
+                    <div className={`bg-gray-400  h-5 w-20 px-2 rounded-bl-lg 
+                    text-sm text-gray-700 justify-end 
+                    ${individualStyles}`}>
+                        skill: +<span className='text-green-900'>00</span>
+                    </div>
 
-                <div className={`bg-gray-100 h-5 w-24 px-2 text-sm text-black justify-end ${individualStyles}`}>
-                    expert: +<span className='text-red-900'>00</span>
-                </div>
-            </div>
+                    <div className={`bg-gray-100 h-5 w-22 px-2 
+                text-sm text-gray-700 justify-end 
+                    ${individualStyles}`}>
+                        expert: +<span className='text-red-900'>00</span>
+                    </div>
+                </div>)
+            }
 
         </div>
 
