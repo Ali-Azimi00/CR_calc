@@ -15,17 +15,19 @@ const Calculator = () => {
                 </div>
             </div>
 
-            <div className=" mb-4  justify-center min-w-100 border-2 border-red-800">
-                <Attributes />
-            </div>
-
-            <div className="flex flex-row gap-1 justify-around items-center">
-                <div className="mb-4 w-full">
-                    <Defensive />
+            <div className="flex flex-wrap justify-center">
+                <div className=" mb-4  justify-center min-w-100 max-w-[1000px] border-2 border-red-800">
+                    <Attributes />
                 </div>
 
-                <div className="mb-4  w-full">
-                    <Offensive />
+                <div className="md:flex flex-row md:gap-1 justify-around items-center w-full min-w-100 max-w-[1000px]">
+                    <div className="mb-4 w-full">
+                        <Defensive />
+                    </div>
+
+                    <div className="mb-4  w-full">
+                        <Offensive />
+                    </div>
                 </div>
             </div>
 

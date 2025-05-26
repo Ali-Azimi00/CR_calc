@@ -14,22 +14,25 @@ type DropdownProps = {
 
 export default function Dropdown({ options }: DropdownProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const [selection, setSelection] = useState('Select')
 
     const toggleDropdown = () => setIsOpen(!isOpen);
 
     return (
-        <div className='h-6 w-[50%]'>
+        <div className='h-6 '>
             <div className="relative text-left ">
 
                 <button
                     onClick={toggleDropdown}
-                    className='px-2 text-sm flex justify-between w-full
-                text-white bg-foreground 
-                  border-3 border-double border-white
-                 hover:bg-white hover:border-3 hover:border-foreground 
-                 hover:text-foreground hover:cursor-pointer '
+                    className='px-2 text-sm flex justify-center pt-0.5 h-6 w-full
+                text-black bg-white text-center
+                hover:bg-gray-200 
+                 hover:text-sm hover:cursor-pointer 
+                 '
+                //    border-3 border-double border-white
+
                 >
-                    Options
+                    {selection}
                     <svg
                         className="w-5 h-5   "
                         viewBox="0 0 20 20"
@@ -53,7 +56,7 @@ export default function Dropdown({ options }: DropdownProps) {
                                     key={idx}
                                     // href={option.href || "#"}
                                     // onClick={option.onClick}
-                                    onClick={toggleDropdown}
+                                    onClick={() => { toggleDropdown(); setSelection(option.label) }}
                                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100 hover:cursor-pointer"
                                 >
                                     {option.label}
