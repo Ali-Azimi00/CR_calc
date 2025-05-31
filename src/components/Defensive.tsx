@@ -1,10 +1,57 @@
 import React from 'react'
-import Dropdown from './Dropdown'
+// import Dropdown from './Dropdown'
 import FieldBox from './FieldBox'
 import FieldDropdown from './FieldDropdown'
 
 
 const Defensive = () => {
+
+    const resistanceTypeList = [
+        'Bludgeoning',
+        'Piercing',
+        'Slashing',
+        'Acid',
+        'Cold',
+        'Fire',
+        'Force',
+        'Lightning',
+        'Necrotic',
+        'Poison',
+        'Psychic',
+        'Radiant',
+        'Thunder',
+        'Necrotic'
+    ]
+
+
+    const renderResistanceList = () => {
+
+        return (
+            resistanceTypeList.map((item) => (
+                <div key={item} className=' w-full hover:bg-gray-300 flex '>
+                    <div className='w-[50%] text-end'>
+                        {item}
+                    </div>
+
+                    <div className='w-[20%] flex justify-center items-center'>
+                        <input type='checkbox' className='h-4 w-4 border-1 rounded' />
+                    </div>
+                    <div className='w-[20%] flex justify-center items-center'>
+                        <input type='checkbox' className='h-4 w-4 border-1 rounded' />
+
+                    </div>
+                    <div className='w-[20%] flex justify-center items-center'>
+                        <input type='checkbox' className='h-4 w-4 border-1 rounded' />
+                    </div>
+                </div>
+
+            ))
+        )
+
+
+    }
+
+
     return (
         <div>
             <div className='-mb-3 flex flex-row-reverse'>
@@ -25,14 +72,13 @@ const Defensive = () => {
             </div>
 
 
-
             <div className="justify-center items-center card">
 
                 {/* HP */}
                 <div className='flex flex-wrap text-black mt-4
-            justify-center 
-            md:justify-around 
-            gap-1'>
+                    justify-center 
+                    md:justify-around 
+                    gap-1'>
                     <div className='w-full'>
                         <div className=' flex justify-between
                     '>
@@ -79,9 +125,9 @@ const Defensive = () => {
 
                 {/* AC */}
                 <div className='flex flex-wrap text-black mt-4
-                justify-center  
-                md:justify-evenly 
-                gap-0'>
+                    justify-center  
+                    md:justify-evenly 
+                    gap-0'>
                     <div className='w-full'>
 
                         <div className=' flex justify-evenly'>
@@ -114,7 +160,6 @@ const Defensive = () => {
                                 valueStyle='text-gray-500'
                             />
 
-
                             <FieldBox
                                 title='Natural Armor'
                                 value='000'
@@ -132,7 +177,6 @@ const Defensive = () => {
                                 titleStyle={null}
                                 valueStyle={null}
                             />
-
 
                             <FieldDropdown
                                 options={[
@@ -156,6 +200,65 @@ const Defensive = () => {
                                     </div>
                                 </div>
                             </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                {/* Resistance & Immunity  */}
+                <div className='flex flex-wrap text-black mt-4
+                    justify-center 
+                    md:justify-around 
+                    gap-0'>
+                    <div className='w-full'>
+                        <div className=' flex justify-between '>
+                            <div className='bg-gray-400 w-[65%] text-center'>
+                                Resistance & Immunity
+                            </div>
+                            <div className='bg-gray-300 w-[35%] text-center'>
+                                HP x00
+                            </div>
+                        </div>
+
+
+                        <div className='flex-wrap bg-gray-50 flex 
+                        gap-0 justify-evenly py-4 text-sm'>
+
+                            <div className=' w-full bg-gray-300 flex '>
+                                <div className='w-[50%] text-end text-gray-500'>
+                                    Clear All
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center'>
+                                    <div className='h-4 w-4 border-1 rounded'>
+                                    </div>
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center'>
+                                    <div className='h-4 w-4 border-1 rounded'>
+                                    </div>
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center'>
+                                    <div className='h-4 w-4 border-1 rounded'>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className=' w-full hover:bg-gray-300 
+                            flex mt-2 text-gray-500'>
+                                <div className='w-[50%] text-end text-gray-500' />
+                                <div className='w-[20%] flex justify-center '>
+                                    Val
+                                </div>
+                                <div className='w-[20%] flex justify-center '>
+                                    Res
+                                </div>
+                                <div className='w-[20%] flex justify-center '>
+                                    Imm
+                                </div>
+                            </div>
+                            {renderResistanceList()}
+
 
 
                         </div>
