@@ -44,50 +44,40 @@ const Defensive = () => {
                             </div>
                         </div>
                         <div className='flex-wrap bg-gray-50 flex gap-2 justify-evenly py-2'>
-                            <div className='w-[40%]'>
 
-                                <div className='border-1 border-gray-400 text-center'>
-                                    <div className='bg-gray-400 text-sm' >
-                                        Hit Dice
-                                    </div>
-                                    <div>
-                                        000
-                                    </div>
-                                </div>
+                            <FieldBox
+                                title={'Hit Dice'}
+                                value={'000'}
+                                width={'w-[40%]'}
+                                boxStyle={null}
+                                titleStyle={null}
+                                valueStyle={null}
+                            />
 
-                            </div>
-                            <div className='w-[40%]'>
-                                <div className='border-1 border-gray-400 text-center text-gray-500'>
-                                    <div className='bg-gray-400 text-sm' >
-                                        Effective HP
-                                    </div>
-                                    <div className='bg-gray-100'>
-                                        000
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='w-[60%]'>
-                                <div className='border-1 border-gray-400 text-center'>
-                                    <div className='bg-gray-400 text-sm' >
-                                        Size
-                                    </div>
-                                    <div>
-                                        <Dropdown options={[
-                                            { label: 'small' },
-                                            { label: 'gigantor' }
-                                        ]} />
+                            <FieldBox
+                                title={'Effective HP'}
+                                value={'000'}
+                                width={'w-[40%]'}
+                                boxStyle={'text-gray-500'}
+                                titleStyle={null}
+                                valueStyle={null}
+                            />
 
-                                    </div>
-                                </div>
-                            </div>
+                            <FieldDropdown
+                                options={[
+                                    { label: 'small' },
+                                    { label: 'gigantor' },
+                                ]}
+                                width={'w-[60%]'}
+                                title={'Size'}
+                                titleStyle={null}
+                            />
+
                         </div>
-
-
                     </div>
                 </div>
 
                 {/* AC */}
-
                 <div className='flex flex-wrap text-black mt-4
                 justify-center  
                 md:justify-evenly 
