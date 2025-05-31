@@ -1,5 +1,7 @@
 import React from 'react'
 import Dropdown from './Dropdown'
+// import InputDefense from './InputDefense'
+import Box from './Box'
 
 
 const Defensive = () => {
@@ -22,7 +24,11 @@ const Defensive = () => {
                 </div>
             </div>
 
+
+
             <div className="justify-center items-center card">
+
+                {/* HP */}
                 <div className='flex flex-wrap text-black mt-4
             justify-center 
             md:justify-around 
@@ -39,6 +45,7 @@ const Defensive = () => {
                         </div>
                         <div className='flex-wrap bg-gray-50 flex gap-2 justify-evenly py-2'>
                             <div className='w-[40%]'>
+
                                 <div className='border-1 border-gray-400 text-center'>
                                     <div className='bg-gray-400 text-sm' >
                                         Hit Dice
@@ -47,6 +54,7 @@ const Defensive = () => {
                                         000
                                     </div>
                                 </div>
+
                             </div>
                             <div className='w-[40%]'>
                                 <div className='border-1 border-gray-400 text-center text-gray-500'>
@@ -78,7 +86,101 @@ const Defensive = () => {
                     </div>
                 </div>
 
+                {/* AC */}
+
+                <div className='flex flex-wrap text-black mt-4
+                justify-center  
+                md:justify-evenly 
+                gap-0'>
+                    <div className='w-full'>
+
+                        <div className=' flex justify-evenly'>
+                            <div className='bg-gray-400  w-40 text-center'>
+                                AC
+                            </div>
+                            <div className='bg-gray-300 w-full text-center'>
+                                0000 (type)
+                            </div>
+                        </div>
+
+                        <div className='flex-wrap bg-gray-50 flex gap-2 justify-center py-2'>
+
+                            <div className='w-[50%]'>
+                                <div className='border-1 border-gray-400 text-center'>
+                                    <div className='bg-gray-400 text-sm' >
+                                        Armor Type
+                                    </div>
+                                    <div>
+                                        <Dropdown options={[
+                                            { label: 'type1' },
+                                            { label: 'type2' }
+                                        ]} />
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div className='w-[30%]'>
+                                <div className='border-1 border-gray-400 text-center text-gray-500'>
+                                    <div className='bg-gray-400 text-sm' >
+                                        Effective AC
+                                    </div>
+                                    <div className='bg-gray-100'>
+                                        000
+                                    </div>
+                                </div>
+                            </div>
+
+                            <Box
+                                title='Natural Armor'
+                                value='000'
+                                width='w-[40%]'
+                                boxStyle={null}
+                                titleStyle={null}
+                                valueStyle={null}
+                            />
+
+                            <Box
+                                title='Extra'
+                                value='+00'
+                                width='w-[40%]'
+                                boxStyle={null}
+                                titleStyle={null}
+                                valueStyle={null}
+                            />
+
+
+
+
+                            <div className='w-[60%]'>
+                                <div className='border-1 border-gray-400 text-center'>
+                                    <div className='bg-gray-400 text-sm' >
+                                        Size
+                                    </div>
+                                    <div>
+                                        <Dropdown options={[
+                                            { label: 'small' },
+                                            { label: 'gigantor' }
+                                        ]} />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
             </div>
+
+
+
         </div >)
 }
 
