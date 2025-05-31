@@ -29,17 +29,19 @@ const InputAttributes: React.FC<InputFieldProps> = ({ placeholder, individualSty
                 <input className={`h-6 w-14 bg-gray-100 px-2 border-1 border-black
                         ${individualStyles}`}
                     placeholder={'00'}
-                />
+                >
+
+                </input>
                 <div className={`h-6 w-14 bg-gray-400 px-2 border-1 border-black
                     ${individualStyles}`
                 }>
-                    0
+                    +00
                 </div>
                 <div className={`h-6 w-14 bg-gray-400 pl-2 border-1 border-black
                     border-r-0 flex justify-between rounded-tr-lg
                     ${individualStyles}`}>
                     <div className=''>
-                        00
+                        +00
                     </div>
                     <div className='relative'>
                         <input type="checkbox" className="absolute border-none top-0 right-0 " />
@@ -64,16 +66,16 @@ const InputAttributes: React.FC<InputFieldProps> = ({ placeholder, individualSty
                 </div>)
                 :
                 (<div className='flex flex-row  opacity-75  justify-end'>
-                    <div className={`bg-gray-400  h-5 w-20 px-2 rounded-bl-lg 
+                    <div className={`bg-gray-400  h-5 w-22 px-2 rounded-bl-lg 
                     text-sm text-gray-700 justify-end 
                     ${individualStyles}`}>
-                        skill: +<span className='text-green-900'>00</span>
+                        expert: +<span className='text-green-900'>00</span>
                     </div>
 
-                    <div className={`bg-gray-100 h-5 w-22 px-2 
+                    <div className={`bg-gray-100 h-5 w-20 px-2 
                 text-sm text-gray-700 justify-end 
                     ${individualStyles}`}>
-                        expert: +<span className='text-red-900'>00</span>
+                        skill: +<span className='text-red-900'>00</span>
                     </div>
                 </div>)
             }
