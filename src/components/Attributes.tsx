@@ -50,7 +50,7 @@ const Attributes = () => {
                         <div className='pr-6'>
                             Initiative:
                             <span className='ml-2'>
-                                00
+                                +00
                             </span>
                         </div>
                         <div className='relative'>
