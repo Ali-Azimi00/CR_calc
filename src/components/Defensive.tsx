@@ -1,7 +1,7 @@
 import React from 'react'
 import Dropdown from './Dropdown'
-// import InputDefense from './InputDefense'
-import Box from './Box'
+import FieldBox from './FieldBox'
+import FieldDropdown from './FieldDropdown'
 
 
 const Defensive = () => {
@@ -105,21 +105,15 @@ const Defensive = () => {
 
                         <div className='flex-wrap bg-gray-50 flex gap-2 justify-center py-2'>
 
-                            <div className='w-[50%]'>
-                                <div className='border-1 border-gray-400 text-center'>
-                                    <div className='bg-gray-400 text-sm' >
-                                        Armor Type
-                                    </div>
-                                    <div>
-                                        <Dropdown options={[
-                                            { label: 'type1' },
-                                            { label: 'type2' }
-                                        ]} />
-
-                                    </div>
-                                </div>
-                            </div>
-
+                            <FieldDropdown
+                                options={[
+                                    { label: 'type1' },
+                                    { label: 'type2' },
+                                ]}
+                                width={'w-[50%]'}
+                                title="Armor Type"
+                                titleStyle={null}
+                            />
 
                             <div className='w-[30%]'>
                                 <div className='border-1 border-gray-400 text-center text-gray-500'>
@@ -132,7 +126,7 @@ const Defensive = () => {
                                 </div>
                             </div>
 
-                            <Box
+                            <FieldBox
                                 title='Natural Armor'
                                 value='000'
                                 width='w-[40%]'
@@ -141,7 +135,7 @@ const Defensive = () => {
                                 valueStyle={null}
                             />
 
-                            <Box
+                            <FieldBox
                                 title='Extra'
                                 value='+00'
                                 width='w-[40%]'
