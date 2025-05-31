@@ -115,21 +115,20 @@ const Defensive = () => {
                                 titleStyle={null}
                             />
 
-                            <div className='w-[30%]'>
-                                <div className='border-1 border-gray-400 text-center text-gray-500'>
-                                    <div className='bg-gray-400 text-sm' >
-                                        Effective AC
-                                    </div>
-                                    <div className='bg-gray-100'>
-                                        000
-                                    </div>
-                                </div>
-                            </div>
+                            <FieldBox
+                                title={'Effective AC'}
+                                value={'000'}
+                                width={'w-[30%]'}
+                                boxStyle={null}
+                                titleStyle='text-gray-500'
+                                valueStyle='text-gray-500'
+                            />
+
 
                             <FieldBox
                                 title='Natural Armor'
                                 value='000'
-                                width='w-[40%]'
+                                width='w-[45%]'
                                 boxStyle={null}
                                 titleStyle={null}
                                 valueStyle={null}
@@ -138,33 +137,38 @@ const Defensive = () => {
                             <FieldBox
                                 title='Extra'
                                 value='+00'
-                                width='w-[40%]'
+                                width='w-[35%]'
                                 boxStyle={null}
                                 titleStyle={null}
                                 valueStyle={null}
                             />
 
 
+                            <FieldDropdown
+                                options={[
+                                    { label: 'ATT' },
+                                    { label: 'gigantor' },
+                                ]}
+                                width={'w-[45%]'}
+                                title={'Unarmored Defense'}
+                                titleStyle={null}
+                            />
 
-
-                            <div className='w-[60%]'>
-                                <div className='border-1 border-gray-400 text-center'>
-                                    <div className='bg-gray-400 text-sm' >
-                                        Size
+                            <div className='w-[35%]  text-sm'>
+                                <div className='px-1  '>
+                                    <div className='w-full flex flex-row  justify-center mb-1 '>
+                                        <div className='pr-1'>Shield</div>
+                                        <input type='checkbox' />
                                     </div>
-                                    <div>
-                                        <Dropdown options={[
-                                            { label: 'small' },
-                                            { label: 'gigantor' }
-                                        ]} />
-
+                                    <div className='w-full flex flex-row  justify-center  '>
+                                        <div className='bg-gray-400 px-2'>Bonus</div>
+                                        <div className='border-1 border-gray-400 px-2'>00</div>
                                     </div>
                                 </div>
                             </div>
 
+
                         </div>
-
-
                     </div>
                 </div>
 
