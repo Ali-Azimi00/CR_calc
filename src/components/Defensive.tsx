@@ -7,9 +7,6 @@ import FieldDropdown from './FieldDropdown'
 const Defensive = () => {
 
     const resistanceTypeList = [
-        'Bludgeoning',
-        'Piercing',
-        'Slashing',
         'Acid',
         'Cold',
         'Fire',
@@ -20,12 +17,40 @@ const Defensive = () => {
         'Psychic',
         'Radiant',
         'Thunder',
-        'Necrotic'
     ]
+
+    const physicalTypeList = [
+        ' Blugeoning',
+        'Piercing',
+        'Slashing',
+    ]
+
+    const renderPhysicalList = () => {
+        return (
+            physicalTypeList.map((item) => (
+                <div key={item} className=' w-full bg-gray-200 flex '>
+                    <div className='w-[50%] text-end'>
+                        {item}
+                    </div>
+
+                    <div className='w-[20%] flex justify-center items-center'>
+                        <input type='checkbox' className='h-4 w-4 border-1 rounded z-2' />
+                    </div>
+                    <div className='w-[20%] flex justify-center items-center'>
+                        <input type='checkbox' className='h-4 w-4 border-1 rounded z-2' />
+
+                    </div>
+                    <div className='w-[20%] flex justify-center items-center'>
+                        <input type='checkbox' className='h-4 w-4 border-1 rounded z-2' />
+                    </div>
+                </div>
+
+            ))
+        )
+    }
 
 
     const renderResistanceList = () => {
-
         return (
             resistanceTypeList.map((item) => (
                 <div key={item} className=' w-full hover:bg-gray-300 flex '>
@@ -47,8 +72,6 @@ const Defensive = () => {
 
             ))
         )
-
-
     }
 
 
@@ -224,15 +247,14 @@ const Defensive = () => {
 
 
                         <div className='flex-wrap bg-gray-50 flex 
-                        gap-0 justify-evenly py-4 text-sm'>
+                        gap-0 justify-evenly py-4 text-sm relative'>
 
-                            <div className=' w-full bg-gray-300 flex '>
+                            <div className=' w-full bg-gray-300 flex flex-row'>
                                 <div className='w-[50%] text-end text-gray-500'>
                                     Clear All
                                 </div>
                                 <div className='w-[20%] flex justify-center items-center'>
-                                    <div className='h-4 w-4 border-1 rounded'>
-                                    </div>
+                                    s
                                 </div>
                                 <div className='w-[20%] flex justify-center items-center'>
                                     <div className='h-4 w-4 border-1 rounded'>
@@ -245,7 +267,7 @@ const Defensive = () => {
                             </div>
 
                             <div className=' w-full hover:bg-gray-300 
-                            flex mt-2 text-gray-500'>
+                            flex flex-row mt-2 text-gray-500 '>
                                 <div className='w-[50%] text-end text-gray-500' />
                                 <div className='w-[20%] flex justify-center '>
                                     Val
@@ -257,6 +279,37 @@ const Defensive = () => {
                                     Imm
                                 </div>
                             </div>
+
+
+
+                            {renderPhysicalList()}
+
+
+
+                            <div className='h-1 w-full bg-gray-300'></div>
+
+
+                            <div className=' w-full bg-gray-300 flex  '>
+                                <div className='w-[50%] text-end'></div>
+                                <div className='w-[20%] flex justify-center items-center'>
+                                    <div className='border-1 h-16 mb-16 absolute z-0 '></div>
+                                    <button className='h-3 w-5 border-1 rounded hover:cursor-pointer bg-gray-300 z-2'>
+                                    </button>
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center'>
+                                    <div className='border-1 h-16 mb-16 absolute z-0 '></div>
+                                    <button className='h-3 w-5 border-1 rounded hover:cursor-pointer bg-gray-300 z-2'>
+                                    </button>
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center'>
+                                    <div className='border-1 h-16 mb-16 absolute z-0 '></div>
+                                    <button className='h-3 w-5 border-1 rounded hover:cursor-pointer bg-gray-300 z-2'>
+                                    </button>
+                                </div>
+                            </div>
+                            <div className='h-1 w-full bg-gray-300'></div>
+
+
                             {renderResistanceList()}
 
 
@@ -266,11 +319,7 @@ const Defensive = () => {
                 </div>
 
 
-
-
             </div>
-
-
 
         </div >)
 }
