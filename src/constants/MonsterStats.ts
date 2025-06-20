@@ -19,12 +19,12 @@ export interface AttributesInput {
 }
 
 export interface AttributesOutput {
-    STR?: AttrValues;
-    DEX?: AttrValues;
-    CON?: AttrValues;
-    INT?: AttrValues;
-    WIS?: AttrValues;
-    CHA?: AttrValues;
+    STR?: AttrOutput;
+    DEX?: AttrOutput;
+    CON?: AttrOutput;
+    INT?: AttrOutput;
+    WIS?: AttrOutput;
+    CHA?: AttrOutput;
     passPerc?: number;
     initiative?: number;
 
@@ -35,12 +35,11 @@ export interface Attr {
   save?: boolean;
 }
 
-export interface AttrValues {
-    value: number;
-    mod: number;
-    saveMod: number;
-    skillMod: number;
-    expertise: number;
+export interface AttrOutput {
+    value?: number;
+    mod?: number;
+    modProf?: number;
+    expertise?: number;
 }
 
     // goalCR?: number;
@@ -55,7 +54,7 @@ export interface Offensive {
 
 }
 
-function getModifier(attribute:number){
+export function getModifier(attribute:number){
   return Math.floor((attribute-10)/2);
 }
 
@@ -88,5 +87,28 @@ export function generateAttributesInput(): AttributesInput{
       },
       passPerc: false,
       initiative: false,
+    }  
+}
+
+
+
+export function generateAttributesOutput(attributes: AttributesInput, proficiency:number): AttributesOutput {
+    const output: AttributesOutput = {};
+    type AttributeKey = keyof typeof attributes;
+    for (const key in attributes) {
+        const attr = attributes[key as AttributeKey];
+        if (attr && typeof attr === 'object') {
+            const value = attr.value;
+            const mod = value ? getModifier(value) : 0;
+            output[key as keyof Omit<AttributesInput, "passPerc" | "initiative">] = {
+                value: value || 10,
+                mod: mod,
+                modProf: mod + proficiency,
+                expertise: mod + proficiency*2,
+            };
+        } else if (key === "passPerc" || key === "initiative") {
+            output[key as "passPerc" | "initiative"] = 0;
+        }
     }
+    return output;
 }
