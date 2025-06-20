@@ -16,6 +16,7 @@ const Calculator = () => {
     function handleModifyAttribute (attrName: string, newValue?: number | boolean): void {
         const attrKey = attrName as AttributeKey;
         const newAttr = { ...attrInput };
+        // Check for if newValue is a number or boolean and update the corresponding attribute
         if (typeof newValue === 'number' && newAttr[attrKey] && typeof newAttr[attrKey] === "object" && "value" in newAttr[attrKey]) {
             (newAttr[attrKey] as { value: number }).value = newValue;
         }
