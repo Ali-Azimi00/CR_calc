@@ -1,21 +1,36 @@
-import React from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import InputAttributes from './InputAttributes'
+import { AttributesInput } from '../constants/MonsterStats'
 // import OutputField from './outputField'
 // import Dropdown from './Dropdown'
 
-const Attributes = () => {
+    interface AttributesProps {
+        attrInput?: AttributesInput;
+        handleModifyAttribute?: (attrName: string, newValue: number | boolean) => void;
+        handlePassivePerceptionCheck?: (event: ChangeEvent<HTMLInputElement>) => void;
+        handleInitiativeCheck?: (event: ChangeEvent<HTMLInputElement>) => void;
+    }
+
+const Attributes: React.FC<AttributesProps> = ({attrInput, handleModifyAttribute, handlePassivePerceptionCheck, handleInitiativeCheck}) => {
 
     const attributeNames = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA']
+    const [passPercep, setPassPerception] = useState(false);
+    const [initiate, setInitiative] = useState(false);
 
     const renderAttributeFields = () => {
+        type AttributeKey = keyof typeof attrInput;
+
         return (
             attributeNames.map((att) => (
                 <div className="mb-4" key={att}>
-                    <InputAttributes placeholder={att} />
+                    <InputAttributes placeholder={att} handleModifyAttribute={handleModifyAttribute} attributeData={attrInput ? attrInput[att as AttributeKey] : undefined}/>
                 </div>
             ))
-        )
-    }
+        )}
+    
+        // const handlePassivePerceptionCheck = (event: ChangeEvent<HTMLInputElement>) => {
+        //     setPassPerception(event.target.checked); // event.target.checked directly gives the new checked state
+        // };
 
 
     return (
@@ -40,7 +55,8 @@ const Attributes = () => {
                             </span>
                         </div>
                         <div className='relative'>
-                            <input type="checkbox" className="absolute border-none top-0 right-0 " />
+                            <input type="checkbox" className="absolute border-none top-0 right-0 " 
+                            onChange={handlePassivePerceptionCheck}/>
                         </div>
                     </div>
 
@@ -54,7 +70,8 @@ const Attributes = () => {
                             </span>
                         </div>
                         <div className='relative'>
-                            <input type="checkbox" className="absolute border-none top-0 right-0 " />
+                            <input type="checkbox" className="absolute border-none top-0 right-0 " 
+                            onChange={handleInitiativeCheck}/>
                         </div>
                     </div>
                 </div>
