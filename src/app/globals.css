@@ -43,21 +43,29 @@ body {
 }
 
 .crTracker{
-  border-radius: 100%;
-  border: 2px, solid, white;
+  z-index: 2;
+  /* border-radius: 100%;
+  border: 2px, solid, white; */
+  /* border-radius: 5%;
+  border-top-right-radius: 0; */
+  
+  border-bottom-left-radius: 5%;
+
+  box-shadow: 1px 1px 200px 1px rgba(255, 255, 255, 0.274);
+
   position:fixed;
-  top:-2rem;
-  right:-2rem;
-  height: 8rem;
-  width: 8rem;
+  top:0rem;
+  right:0rem;
+  height: auto;
+  width: auto;
 
   color:white;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
 
-  background-color: #a1251d;
-
-  padding-top: 1rem;
-  padding-right: 1rem;
+  /* background-color: #a1251d; */
+  border: 8 solid #a1251d;
+  /* padding-top: 1rem;
+  padding-right: 1rem; */
   justify-items: center;
   align-content: center;
   

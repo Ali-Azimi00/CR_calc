@@ -19,13 +19,16 @@ import {
 import { ChangeEvent, useState } from "react";
 
 
+import CrTag from "@/components/CrTag"
+// import Dropdown from "@/components/Dropdown"
+//rafce
 const Calculator = () => {
-    const [proficiency, setProficiency] = useState(2);
-    const [attrInput, setAttrInput] = useState<AttributesInput>(defaultAttributesInput);
-    const [attrOutput, setAttrOutput] = useState<AttributesOutput>(generateAttributesOutput(attrInput, proficiency));
-    const [defInput, setDefInput] = useState(defaultDefensiveInput);
-    const [defOutput, setDefOutput] = useState(generateDefultDefensiveOutput);
-    type AttributeKey = keyof typeof attrInput;
+  const [proficiency, setProficiency] = useState(2);
+  const [attrInput, setAttrInput] = useState<AttributesInput>(defaultAttributesInput);
+  const [attrOutput, setAttrOutput] = useState<AttributesOutput>(generateAttributesOutput(attrInput, proficiency));
+  const [defInput, setDefInput] = useState(defaultDefensiveInput);
+  const [defOutput, setDefOutput] = useState(generateDefultDefensiveOutput);
+  type AttributeKey = keyof typeof attrInput;
 
   //#region ATTRIBUTES FUNCTIONS
   // function to handle attribute modification in InputAttributes component
@@ -76,26 +79,26 @@ const Calculator = () => {
 
 
   //#region DEFENSIVE FUNCTIONS
-  function handleHpChange(newValue: number | Size){
+  function handleHpChange(newValue: number | Size) {
     const newDefInput = { ...defInput };
     newDefInput.hpInput ??= { size: Size.Medium, hitDice: 1 };
     const newDefOutput = { ...defOutput };
     newDefOutput.hpOutput ??= {};
     if (typeof newValue === 'number') {
-        newDefInput.hpInput.hitDice = newValue;
-        newDefOutput.hpOutput = {
-            totalHp: getTotalHp(newDefInput.hpInput.hitDice, (newDefInput.hpInput.size ?? Size.Medium), (attrInput.CON?.value ?? 10)),
-            effectiveHp: newDefOutput.hpOutput.totalHp,
-            hpString: getHpString(newDefInput.hpInput.hitDice, (newDefInput.hpInput.size ?? Size.Medium), (attrInput.CON?.value ?? 10)),
-        }
-    }else{
-        if(!newDefInput.hpInput?.hitDice) newDefInput.hpInput = { size: newValue, hitDice: 1 };
-        newDefInput.hpInput.size = newValue;
-        newDefOutput.hpOutput = {
-            totalHp: getTotalHp((newDefInput.hpInput.hitDice ?? 1), (newDefInput.hpInput.size ?? Size.Medium), (attrInput.CON?.value ?? 10)),
-            effectiveHp: newDefOutput.hpOutput.totalHp,
-            hpString: getHpString((newDefInput.hpInput.hitDice ?? 1), (newDefInput.hpInput.size ?? Size.Medium), (attrInput.CON?.value ?? 10)),
-        }
+      newDefInput.hpInput.hitDice = newValue;
+      newDefOutput.hpOutput = {
+        totalHp: getTotalHp(newDefInput.hpInput.hitDice, (newDefInput.hpInput.size ?? Size.Medium), (attrInput.CON?.value ?? 10)),
+        effectiveHp: newDefOutput.hpOutput.totalHp,
+        hpString: getHpString(newDefInput.hpInput.hitDice, (newDefInput.hpInput.size ?? Size.Medium), (attrInput.CON?.value ?? 10)),
+      }
+    } else {
+      if (!newDefInput.hpInput?.hitDice) newDefInput.hpInput = { size: newValue, hitDice: 1 };
+      newDefInput.hpInput.size = newValue;
+      newDefOutput.hpOutput = {
+        totalHp: getTotalHp((newDefInput.hpInput.hitDice ?? 1), (newDefInput.hpInput.size ?? Size.Medium), (attrInput.CON?.value ?? 10)),
+        effectiveHp: newDefOutput.hpOutput.totalHp,
+        hpString: getHpString((newDefInput.hpInput.hitDice ?? 1), (newDefInput.hpInput.size ?? Size.Medium), (attrInput.CON?.value ?? 10)),
+      }
     }
 
   }
@@ -106,50 +109,57 @@ const Calculator = () => {
 
 
   //#region TESTING VALUES
-  
-    const [testValue, setTestValue] = useState('');
-    const [testResult, setTestResult] = useState('');
-    function handleTestValueChange(){
-        setTestResult(`${getAvgDieRoll(parseInt(testValue))}`);
-        console.log(`Test value changed to: ${testValue}`);
-        console.log(`Test result: ${testResult}`);
-    }
-        // <input //INPUT FOR TESTING PURPOSES
-        //  className={`h-6 w-14 bg-gray-100 px-2 border-1 border-black`} onChange={(e)=>{setTestValue(e.target.value)}}/>
+
+  const [testValue, setTestValue] = useState('');
+  const [testResult, setTestResult] = useState('');
+  function handleTestValueChange() {
+    setTestResult(`${getAvgDieRoll(parseInt(testValue))}`);
+    console.log(`Test value changed to: ${testValue}`);
+    console.log(`Test result: ${testResult}`);
+  }
+  // <input //INPUT FOR TESTING PURPOSES
+  //  className={`h-6 w-14 bg-gray-100 px-2 border-1 border-black`} onChange={(e)=>{setTestValue(e.target.value)}}/>
 
   //#endregion
-  
+
   return (
     <div className="">
       <div className="crTracker ">
         <div>CR: ##</div>
       </div>
 
-      <div className="flex flex-wrap justify-center">
-        <div className=" mb-4  justify-center min-w-100 max-w-[1000px] border-2 border-red-800">
-          <Attributes
-            proficiency={proficiency}
-            attrInput={attrInput}
-            attrOutput={attrOutput}
-            handleModifyAttribute={handleModifyAttribute}
-            handlePassivePerceptionCheck={handlePassivePerceptionCheck}
-            handleInitiativeCheck={handleInitiativeCheck}
-            handleTestValueChange={handleTestValueChange}
-          />
-        {/* <button className="flex flex-row justify-around gap-1" onClick={handleTestValueChange}/> */}
-        </div>
 
-        <div className="md:flex flex-row md:gap-1 justify-around items-center w-full min-w-100 max-w-[1000px]">
-          <div className="mb-4 w-full">
-            <Defensive 
-                defInput={defInput}
-                defOutput={defOutput}  
-                handleHpChange={handleHpChange}
+      return (
+      <div className="">
+
+        <CrTag />
+
+        <div className="flex flex-wrap justify-center">
+          <div className=" mb-4  justify-center min-w-100 max-w-[1000px] border-2 border-red-800">
+            <Attributes
+              proficiency={proficiency}
+              attrInput={attrInput}
+              attrOutput={attrOutput}
+              handleModifyAttribute={handleModifyAttribute}
+              handlePassivePerceptionCheck={handlePassivePerceptionCheck}
+              handleInitiativeCheck={handleInitiativeCheck}
+              handleTestValueChange={handleTestValueChange}
             />
+            {/* <button className="flex flex-row justify-around gap-1" onClick={handleTestValueChange}/> */}
           </div>
 
-          <div className="mb-4  w-full">
-            <Offensive />
+          <div className="md:flex flex-row md:gap-1 justify-around items-center w-full min-w-100 max-w-[1000px]">
+            <div className="mb-4 w-full">
+              <Defensive
+                defInput={defInput}
+                defOutput={defOutput}
+                handleHpChange={handleHpChange}
+              />
+            </div>
+
+            <div className="mb-4  w-full">
+              <Offensive />
+            </div>
           </div>
         </div>
       </div>
