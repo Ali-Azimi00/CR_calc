@@ -124,12 +124,7 @@ const Calculator = () => {
 
   return (
     <div className="">
-      <div className="crTracker ">
-        <div>CR: ##</div>
-      </div>
 
-
-      return (
       <div className="">
 
         <CrTag />
