@@ -1,11 +1,41 @@
-import React from 'react'
+import React, {useState} from 'react'
 // import Dropdown from './Dropdown'
 import FieldBox from './FieldBox'
 import FieldDropdown from './FieldDropdown'
 import DefenseModField from './DefenseModField'
+import { DefensiveInput, DefensiveOutput, Size } from '@/constants/MonsterStats';
 
 
-const Defensive = () => {
+interface DefensiveProps {
+    handleHpChange?: (newHp: number | Size) => void;
+    defInput?: DefensiveInput;
+    defOutput?: DefensiveOutput;
+}
+
+const Defensive: React.FC<DefensiveProps> = ({defInput, defOutput, handleHpChange}) => {
+    const [hitDiceInput, setHitDiceInput] = useState(defInput?.hpInput?.hitDice || 0);
+    const [sizeInput, setSizeInput] = useState(defInput?.hpInput?.size || Size.Medium);
+    const hpString = defOutput?.hpOutput?.hpString || '0000(00d00+0000)';
+    const totalHp = defOutput?.hpOutput?.totalHp || 0;
+    const effectiveHp = defOutput?.hpOutput?.effectiveHp || 0;
+
+    function handleHitDiceChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const newHitDice = parseInt(e.target.value, 10);
+        if (!isNaN(newHitDice)) {
+            setHitDiceInput(newHitDice);
+            if (handleHpChange) {
+                handleHpChange(newHitDice);
+            }
+        }
+    }
+
+    function handleSizeChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const newSize = e.target.value as Size || Size.Medium
+        setSizeInput(newSize);
+        if (handleHpChange) {
+            handleHpChange(newSize);
+        }
+    }
 
     const resistanceTypeList = [
         'Acid',
