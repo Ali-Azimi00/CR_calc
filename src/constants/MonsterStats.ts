@@ -1,4 +1,4 @@
-import React from 'react'
+import { Size } from "./Constants";
 
 export interface MonsterStatBlock {
   attributes?: AttributesInput;
@@ -79,14 +79,14 @@ export function getModifier(attribute:number){
   return Math.floor((attribute-10)/2);
 }
 
-export enum Size {
-    Tiny = "Tiny",
-    Small = "Small",
-    Medium = "Medium",
-    Large = "Large",
-    Huge = "Huge",
-    Gargantuan = "Gargantuan"
-}
+// export enum Size {
+//     Tiny = "Tiny",
+//     Small = "Small",
+//     Medium = "Medium",
+//     Large = "Large",
+//     Huge = "Huge",
+//     Gargantuan = "Gargantuan"
+// }
 
 export function getProfByCR(cr: number): number {
     if (cr < 5) return 2; // Proficiency for CR 0-4

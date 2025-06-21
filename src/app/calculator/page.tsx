@@ -11,11 +11,13 @@ import {
   getModifier,
   getAvgDieRoll,
   defaultDefensiveInput,
-  Size,
   generateDefultDefensiveOutput,
   getTotalHp,
   getHpString,
 } from "@/constants/MonsterStats";
+import {
+  Size,
+} from "@/constants/Constants";
 import { ChangeEvent, useState } from "react";
 
 

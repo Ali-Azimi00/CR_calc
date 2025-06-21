@@ -4,7 +4,8 @@ import React, { useState } from 'react'
 import FieldBox from './FieldBox'
 import FieldDropdown from './FieldDropdown'
 import DefenseModField from './DefenseModField'
-import { DefensiveInput, DefensiveOutput, Size } from '@/constants/MonsterStats';
+import { DefensiveInput, DefensiveOutput } from '@/constants/MonsterStats';
+import { Size, DamageTypes, DamageTypesPhysical, DamageTypesSpecial } from '@/constants/Constants';
 
 
 interface DefensiveProps {
