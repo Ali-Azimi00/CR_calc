@@ -16,11 +16,11 @@ const Box: React.FC<BoxOptions> = ({ title, value, width, boxStyle, titleStyle, 
 
     return (
         <div className={`${width}`}>
-            <div className={`border-1 border-gray-400 text-center ${boxStyle}`}>
-                <div className={`bg-gray-400 text-sm ${titleStyle}`} >
+            <div className={`border-1 border-gray-400 text-center  ${boxStyle}`}>
+                <div className={`bg-gray-400 text-sm  ${titleStyle}`} >
                     {title}
                 </div>
-                <div className={`${valueStyle}`}>
+                <div className={` ${valueStyle}`}>
                     {value}
                 </div>
             </div>
