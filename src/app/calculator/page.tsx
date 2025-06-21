@@ -19,9 +19,6 @@ import {
 import { ChangeEvent, useState } from "react";
 
 
-import Attributes from "@/components/Attributes"
-import Offensive from "@/components/Offensive"
-import Defensive from "@/components/Defensive"
 import CrTag from "@/components/CrTag"
 // import Dropdown from "@/components/Dropdown"
 //rafce
@@ -166,7 +163,8 @@ const Calculator = () => {
           </div>
         </div>
       </div>
-      );
+    </div>
+  );
 };
 
-      export default Calculator;
+export default Calculator;

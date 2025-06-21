@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+"use client";
+import React, { useState } from 'react'
 // import Dropdown from './Dropdown'
 import FieldBox from './FieldBox'
 import FieldDropdown from './FieldDropdown'
@@ -12,7 +13,7 @@ interface DefensiveProps {
     defOutput?: DefensiveOutput;
 }
 
-const Defensive: React.FC<DefensiveProps> = ({defInput, defOutput, handleHpChange}) => {
+const Defensive: React.FC<DefensiveProps> = ({ defInput, defOutput, handleHpChange }) => {
     const [hitDiceInput, setHitDiceInput] = useState(defInput?.hpInput?.hitDice || 0);
     const [sizeInput, setSizeInput] = useState(defInput?.hpInput?.size || Size.Medium);
     const hpString = defOutput?.hpOutput?.hpString || '0000(00d00+0000)';
