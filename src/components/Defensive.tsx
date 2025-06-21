@@ -2,6 +2,7 @@ import React from 'react'
 // import Dropdown from './Dropdown'
 import FieldBox from './FieldBox'
 import FieldDropdown from './FieldDropdown'
+import DefenseModField from './DefenseModField'
 
 
 const Defensive = () => {
@@ -254,7 +255,8 @@ const Defensive = () => {
                                     Clear All
                                 </div>
                                 <div className='w-[20%] flex justify-center items-center'>
-                                    s
+                                    <div className='h-4 w-4 border-1 rounded'>
+                                    </div>
                                 </div>
                                 <div className='w-[20%] flex justify-center items-center'>
                                     <div className='h-4 w-4 border-1 rounded'>
@@ -284,10 +286,7 @@ const Defensive = () => {
 
                             {renderPhysicalList()}
 
-
-
                             <div className='h-1 w-full bg-gray-300'></div>
-
 
                             <div className=' w-full bg-gray-300 flex  '>
                                 <div className='w-[50%] text-end'></div>
@@ -309,15 +308,279 @@ const Defensive = () => {
                             </div>
                             <div className='h-1 w-full bg-gray-300'></div>
 
-
                             {renderResistanceList()}
-
 
 
                         </div>
                     </div>
                 </div>
 
+                {/*Defensive Modifiers*/}
+                <div className='flex flex-wrap text-black mt-4
+                    justify-center 
+                    md:justify-around 
+                    gap-1'>
+                    <div className='w-full'>
+                        <div className=' flex justify-between
+                    '>
+                            <div className='bg-gray-400  w-[60%] text-center flex items-center justify-center'>
+                                Defensive Modifiers
+                            </div>
+                            <div className='bg-gray-300 w-[40%] text-center flex flex-row'>
+                                <FieldBox
+                                    title={'HP:'}
+                                    value={'x00'}
+                                    width={'w-full'}
+                                    boxStyle={'border-none'}
+                                    titleStyle={'text-xs'}
+                                    valueStyle={'text-xs'}
+                                />
+                                <FieldBox
+                                    title={'AC:'}
+                                    value={'+00'}
+                                    width={'w-full'}
+                                    boxStyle={'border-none'}
+                                    titleStyle={'text-xs'}
+                                    valueStyle={'text-xs'}
+                                />
+                            </div>
+                        </div>
+
+
+                        <div className='flex-wrap bg-gray-50 flex 
+                        gap-0 justify-evenly text-sm py-4 pt-1  relative'>
+                            <div className=' w-full flex flex-row'>
+                                <div className='w-[50%] text-end text-gray-500 '>
+                                    Saving Throws
+                                </div>
+                                <div className='w-[10%] flex 
+                                justify-end items-center text-gray-500'>
+                                    0
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center '>
+                                    <div>
+
+                                    </div>
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center
+                                text-gray-500 text-xs '>
+                                    +00
+                                </div>
+                            </div>
+
+                            <DefenseModField
+                                title={'Legendary Resistance'}
+                                hp={'+00'}
+                                ac={null}
+                            />
+                            <div className=' w-full flex flex-row justify-end'>
+                                <div className={`w-[25%] text-end text-xs text-gray-500 py-0.5 mt-0.5  `}>
+                                    uses per day:&nbsp;
+                                </div>
+                                <div className=' w-[20%] my-0.5'>
+                                    <input className='border-2 h-5  border-gray-400 
+                                    flex w-[100%] justify-end items-center  text-center text-xs'
+                                        placeholder='00'
+                                    />
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center
+                                 text-gray-500 text-xs ' >
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center
+                                 text-gray-500 text-xs '>
+                                </div>
+                            </div>
+                            <DefenseModField
+                                title={'Magical Resistance'}
+                                hp={'x00'}
+                                ac={'+00'}
+                            />
+                            <DefenseModField
+                                title={'Frightful Presence'}
+                                hp={'+00'}
+                                ac={null}
+                            />
+                            <DefenseModField
+                                title={'Regeneration'}
+                                hp={'+00'}
+                                ac={null}
+                            />
+                            <div className=' w-full flex flex-row justify-end'>
+                                <div className={`w-[35%] text-end text-xs text-gray-500 py-0.5 mt-0.5  `}>
+                                    Hp gained/round:&nbsp;
+                                </div>
+                                <div className=' w-[20%] my-0.5'>
+                                    <input className='border-2 h-5  border-gray-400 
+                                    flex w-[100%] justify-end items-center text-center text-xs'
+                                        placeholder='00'
+                                    />
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center
+                                 text-gray-500 text-xs ' >
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center
+                                 text-gray-500 text-xs '>
+                                </div>
+                            </div>
+                            <DefenseModField
+                                title={'Possession'}
+                                hp={'x00'}
+                                ac={null}
+                            />
+                            <DefenseModField
+                                title={'Relentless/Undead Fortitude'}
+                                hp={'+00'}
+                                ac={null}
+                            />
+                            <div className=' w-full flex flex-row justify-end'>
+                                <div className={`w-[25%] text-end text-xs text-gray-500 py-0.5 mt-0.5  `}>
+                                    uses per day:&nbsp;
+                                </div>
+                                <div className=' w-[20%] my-0.5'>
+                                    <input className='border-2 h-5  border-gray-400 
+                                    flex w-[100%] justify-end items-center  text-center text-xs'
+                                        placeholder='00'
+                                    />
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center
+                                 text-gray-500 text-xs ' >
+                                </div>
+                                <div className='w-[20%] flex justify-center items-center
+                                 text-gray-500 text-xs '>
+                                </div>
+                            </div>
+
+                            <DefenseModField
+                                title={'Damage Transfer'}
+                                hp={'x00'}
+                                ac={null}
+                            />
+                            <DefenseModField
+                                title={'Constict'}
+                                hp={null}
+                                ac={'+00'}
+                            />
+                            <DefenseModField
+                                title={'Avoidance'}
+                                hp={null}
+                                ac={'+00'}
+                            />
+                            <DefenseModField
+                                title={'Nimble Escape'}
+                                hp={null}
+                                ac={'+00'}
+                            />
+                            <DefenseModField
+                                title={'Shadow Stealth'}
+                                hp={null}
+                                ac={'+00'}
+                            />
+                            <DefenseModField
+                                title={'Stench'}
+                                hp={null}
+                                ac={'+00'}
+                            />
+                            <DefenseModField
+                                title={'Superior Invisibility'}
+                                hp={null}
+                                ac={'+00'}
+                            />
+                            <DefenseModField
+                                title={'Web'}
+                                hp={null}
+                                ac={'+00'}
+                            />
+                            <DefenseModField
+                                title={'Parry'}
+                                hp={null}
+                                ac={'+00'}
+                            />
+                            <div className=' w-full flex flex-row justify-end'>
+                                <div className='w-[50%] flex'>
+                                    <div className='w-[50%] flex mr-2' >
+                                        <div className={`w-[50%] text-end text-xs text-gray-500 py-0.5  mt-0.5 `}>
+                                            Uses:&nbsp;
+                                        </div>
+                                        <div className=' w-[50%] my-0.5'>
+                                            <input className='border-2 h-5  border-gray-400 
+                                    flex w-[100%] justify-end items-center text-center text-xs'
+                                                placeholder='00'
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className='w-[50%] flex'>
+                                        <div className={`w-[50%] text-end text-xs text-gray-500 py-0.5 mt-0.5 `}>
+                                            Bonus:&nbsp;
+                                        </div>
+                                        <div className=' w-[50%] my-0.5'>
+                                            <input className='border-2 h-5  border-gray-400 
+                                    flex w-[100%] justify-end items-center text-center text-xs '
+                                                placeholder='00'
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='w-[40%] flex justify-center items-center'>
+                                    <div className='w-[50%] 
+                                 text-gray-500 text-xs' >
+                                    </div>
+                                    <div className='w-[50%] 
+                                 text-gray-500 text-xs '>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <DefenseModField
+                                title={'Flying Speed'}
+                                hp={null}
+                                ac={'+00'}
+                            />
+                            <div className=' w-full flex flex-row justify-end'>
+                                <div className='w-[50%] flex '>
+                                    <div className='w-[50%] flex mr-2' >
+                                        <div className={`w-[50%] text-end text-xs text-gray-500 py-0.5  mt-0.5 `}>
+                                            Fly:&nbsp;
+                                        </div>
+                                        <div className=' w-[50%] my-0.5'>
+                                            <input className='border-2 h-5  border-gray-400 
+                                    flex w-[100%] justify-end items-center text-center text-xs'
+                                                placeholder='00'
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className='w-[50%] flex'>
+                                        <div className={`w-[50%] text-end text-xs text-gray-500 py-0.5 mt-0.5 `}>
+                                            Range:&nbsp;
+                                        </div>
+                                        <div className=' w-[50%] my-0.5'>
+                                            <input className='border-2 h-5  border-gray-400 
+                                    flex w-[100%] justify-end items-center text-center text-xs '
+                                                placeholder='00'
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='w-[40%] flex justify-center items-center'>
+                                    <div className='w-[50%] 
+                                 text-gray-500 text-xs' >
+                                    </div>
+                                    <div className='w-[50%] 
+                                 text-gray-500 text-xs '>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
