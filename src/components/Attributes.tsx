@@ -11,6 +11,7 @@ interface AttributesProps {
   handleModifyAttribute?: (attrName: string,newValue: number | boolean) => void;
   handlePassivePerceptionCheck?: (event: ChangeEvent<HTMLInputElement>) => void;
   handleInitiativeCheck?: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleTestValueChange?: () => void;
 }
 
 const Attributes: React.FC<AttributesProps> = ({
@@ -20,6 +21,7 @@ const Attributes: React.FC<AttributesProps> = ({
     handleModifyAttribute,
     handlePassivePerceptionCheck,
     handleInitiativeCheck,
+    handleTestValueChange,
     }) => {
   const attributeNames = ["STR", "DEX", "CON", "INT", "WIS", "CHA"];
   const passivePerception = attrInput?.passPerc ? 10 + (attrOutput?.WIS?.modProf || 0) : 10 + (attrOutput?.WIS?.mod || 0);
@@ -74,6 +76,9 @@ const Attributes: React.FC<AttributesProps> = ({
                 type="checkbox"
                 className="absolute border-none top-0 right-0 "
                 onChange={handlePassivePerceptionCheck}
+                // testing purposes
+                // onChange={handleTestValueChange}
+                // testing purposes
               />
             </div>
           </div>

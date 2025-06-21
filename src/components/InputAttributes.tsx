@@ -1,26 +1,31 @@
 import React, { ChangeEvent, useState } from "react";
-import { Attr, AttrOutput } from "../constants/MonsterStats";
+import { AttrInput, AttrOutput } from "../constants/MonsterStats";
 
 interface InputFieldProps {
   placeholder?: string;
   individualStyles?: string;
   value?: string;
-  handleModifyAttribute?: (attrName: string,newValue: number | boolean) => void;
-  attributeInputData?: Attr;
+  handleModifyAttribute?: (
+    attrName: string,
+    newValue: number | boolean
+  ) => void;
+  attributeInputData?: AttrInput;
   attributeOutputData?: AttrOutput;
 }
 
 const InputAttributes: React.FC<InputFieldProps> = ({
-        placeholder,
-        individualStyles,
-        handleModifyAttribute,
-        value,
-        attributeInputData,
-        attributeOutputData,
-    }) => {
+  placeholder,
+  individualStyles,
+  handleModifyAttribute,
+  value,
+  attributeInputData,
+  attributeOutputData,
+}) => {
   const attributeName = placeholder || "";
   const [inputValue, setInputValue] = useState(attributeInputData?.value || 10);
-  const [saveThrowBoolean, setSaveThrowBoolean] = useState(attributeInputData?.save || false);
+  const [saveThrowBoolean, setSaveThrowBoolean] = useState(
+    attributeInputData?.save || false
+  );
   const modifier = attributeOutputData?.mod || 0;
   const modifierProf = attributeOutputData?.modProf || 0;
   const expertise = attributeOutputData?.expertise || 0;
@@ -83,9 +88,7 @@ const InputAttributes: React.FC<InputFieldProps> = ({
                     border-r-0 flex justify-between rounded-tr-lg
                     ${individualStyles}`}
         >
-          <div className="">
-            {saveValue >= 0 ? `+${saveValue}` : saveValue}
-          </div>
+          <div className="">{saveValue >= 0 ? `+${saveValue}` : saveValue}</div>
           <div className="relative">
             <input
               type="checkbox"
@@ -116,8 +119,9 @@ const InputAttributes: React.FC<InputFieldProps> = ({
                     text-sm text-gray-700 justify-end 
                     ${individualStyles}`}
           >
-            expert: <span className="text-green-900">
-                {expertise >= 0 ? `+${expertise}` : expertise}
+            expert:{" "}
+            <span className="text-green-900">
+              {expertise >= 0 ? `+${expertise}` : expertise}
             </span>
           </div>
 
@@ -126,8 +130,9 @@ const InputAttributes: React.FC<InputFieldProps> = ({
                 text-sm text-gray-700 justify-end 
                     ${individualStyles}`}
           >
-            skill: <span className="text-red-900">
-                {modifierProf >= 0 ? `+${modifierProf}` : modifierProf}
+            skill:{" "}
+            <span className="text-red-900">
+              {modifierProf >= 0 ? `+${modifierProf}` : modifierProf}
             </span>
           </div>
         </div>
