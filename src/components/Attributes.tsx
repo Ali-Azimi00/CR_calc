@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import InputAttributes from "./InputAttributes";
 import { AttributesInput, AttributesOutput } from "../constants/MonsterStats";
 // import OutputField from './outputField'
@@ -10,8 +10,8 @@ interface AttributesProps {
   attrInput?: AttributesInput;
   attrOutput?: AttributesOutput;
   handleModifyAttribute?: (attrName: string, newValue: number | boolean) => void;
-  handlePassivePerceptionCheck?: (event: ChangeEvent<HTMLInputElement>) => void;
-  handleInitiativeCheck?: (event: ChangeEvent<HTMLInputElement>) => void;
+  handlePassivePerceptionCheck?: (event: boolean) => void;
+  handleInitiativeCheck?: (event: boolean) => void;
   handleTestValueChange?: () => void;
 }
 
@@ -24,9 +24,53 @@ const Attributes: React.FC<AttributesProps> = ({
   handleInitiativeCheck,
   handleTestValueChange,
 }) => {
+  const prof = proficiency || 2; // Default proficiency if not provided
+  const wisMod = attrOutput?.WIS?.mod ?? 0;
+  const dexMod = attrOutput?.DEX?.mod ?? 0;
   const attributeNames = ["STR", "DEX", "CON", "INT", "WIS", "CHA"];
-  const passivePerception = attrInput?.passPerc ? 10 + (attrOutput?.WIS?.modProf || 0) : 10 + (attrOutput?.WIS?.mod || 0);
-  const initiative = attrInput?.initiative ? attrOutput?.DEX?.modProf || 0 : attrOutput?.DEX?.mod || 0;
+  const [passPerceptionCheck, setPassPerceptionCheck] = useState<boolean>(attrInput?.passPerc || false);
+  const [initCheck, setInitiativeCheck] = useState<boolean>(attrInput?.initiative || false);
+  const [passivePerception, setPassPerception] = useState<number>(attrInput?.passPerc ? (10 + wisMod + prof) : (10 + wisMod));
+  const [initiative, setInitiative] = useState<number>(attrInput?.initiative ? (dexMod + prof) : dexMod);
+
+  useEffect(()=>{
+    updatePassPerception();
+  },[proficiency,wisMod,passPerceptionCheck]);
+
+  useEffect(()=>{
+    updateInitiative();
+  },[proficiency,dexMod,initCheck]);
+
+  function updatePassPerception() {
+    const basePerception = 10 + wisMod;
+    if(handlePassivePerceptionCheck){
+        handlePassivePerceptionCheck(passPerceptionCheck);
+      if(attrInput?.passPerc !== undefined){
+        setPassPerception(attrInput.passPerc ? (basePerception + prof) : (basePerception));
+      } else{
+        setPassPerception(basePerception);
+      }
+    }
+  }
+
+  function updateInitiative() {
+    if(handleInitiativeCheck){
+      handleInitiativeCheck(initCheck);
+      if(attrInput?.initiative !== undefined){
+      setInitiative(attrInput.initiative ? (dexMod + prof) : dexMod);
+      } else {
+        setInitiative(dexMod);
+      }
+    }
+  }
+
+  const handleTogglePassivePerception = (event: ChangeEvent<HTMLInputElement>) => {
+    setPassPerceptionCheck(event.target.checked);
+  }
+
+  const handleToggleInitiative = (event: ChangeEvent<HTMLInputElement>) => {
+    setInitiativeCheck(event.target.checked);
+  }
 
   const renderAttributeFields = () => {
     type AttributeKey = keyof typeof attrInput;
@@ -38,6 +82,7 @@ const Attributes: React.FC<AttributesProps> = ({
           handleModifyAttribute={handleModifyAttribute}
           attributeInputData={attrInput ? attrInput[att as AttributeKey] : undefined}
           attributeOutputData={attrOutput ? attrOutput[att as AttributeKey] : undefined}
+          proficiency={proficiency}
         />
       </div>
     ));
@@ -76,7 +121,7 @@ const Attributes: React.FC<AttributesProps> = ({
               <input
                 type="checkbox"
                 className="absolute border-none top-0 right-0 "
-                onChange={handlePassivePerceptionCheck}
+                onChange={handleTogglePassivePerception}
               // testing purposes
               // onChange={handleTestValueChange}
               // testing purposes
@@ -98,7 +143,7 @@ const Attributes: React.FC<AttributesProps> = ({
               <input
                 type="checkbox"
                 className="absolute border-none top-0 right-0 "
-                onChange={handleInitiativeCheck}
+                onChange={handleToggleInitiative}
               />
             </div>
           </div>

@@ -1,16 +1,18 @@
-import React from 'react'
+import { Size } from "./Constants";
 
 export interface MonsterStatBlock {
-  attributes?: AttributesInput;
-  defensiveInput?: DefensiveInput;
-  offensiveInput?: OffensiveInput;
-  crDisplay?: string;
+    crDisplay?: CrDisplay;
+    attributes?: AttributesInput;
+    defensiveInput?: DefensiveInput;
+    offensiveInput?: OffensiveInput;
 }
 
 export interface CrDisplay{
-    cr?: string;
+    cr?: number;
     goalCr?: number;
     prof?: number;
+    defCr?: number;
+    offCr?: number;
 }
 
 export interface AttributesInput {
@@ -79,14 +81,14 @@ export function getModifier(attribute:number){
   return Math.floor((attribute-10)/2);
 }
 
-export enum Size {
-    Tiny = "Tiny",
-    Small = "Small",
-    Medium = "Medium",
-    Large = "Large",
-    Huge = "Huge",
-    Gargantuan = "Gargantuan"
-}
+// export enum Size {
+//     Tiny = "Tiny",
+//     Small = "Small",
+//     Medium = "Medium",
+//     Large = "Large",
+//     Huge = "Huge",
+//     Gargantuan = "Gargantuan"
+// }
 
 export function getProfByCR(cr: number): number {
     if (cr < 5) return 2; // Proficiency for CR 0-4
@@ -134,7 +136,7 @@ export function getHpString(hitDice: number, size: Size, CON: number): string {
 
 export function generateBlankCrDisplay(): CrDisplay {
     return {
-        cr: "--",
+        cr: 0,
         goalCr: 0,
         prof: 2,
     }

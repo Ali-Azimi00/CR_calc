@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { AttrInput, AttrOutput } from "../constants/MonsterStats";
 
 interface InputFieldProps {
@@ -12,6 +12,7 @@ interface InputFieldProps {
   ) => void;
   attributeInputData?: AttrInput;
   attributeOutputData?: AttrOutput;
+  proficiency?: number;
 }
 
 const InputAttributes: React.FC<InputFieldProps> = ({
@@ -21,16 +22,30 @@ const InputAttributes: React.FC<InputFieldProps> = ({
   value,
   attributeInputData,
   attributeOutputData,
+  proficiency = 2,
 }) => {
+  const prof = proficiency ?? 2;
   const attributeName = placeholder || "";
   const [inputValue, setInputValue] = useState(attributeInputData?.value || 10);
   const [saveThrowBoolean, setSaveThrowBoolean] = useState(
     attributeInputData?.save || false
   );
   const modifier = attributeOutputData?.mod || 0;
-  const modifierProf = attributeOutputData?.modProf || 0;
-  const expertise = attributeOutputData?.expertise || 0;
+  const modifierProf = modifier + prof;
+  const expertise = modifierProf + prof;
   const saveValue = saveThrowBoolean ? modifierProf : modifier;
+
+  useEffect(()=>{
+    if (handleModifyAttribute) {
+      handleModifyAttribute(attributeName, inputValue);
+    }
+  },[inputValue])
+
+  useEffect(()=>{
+    if (handleModifyAttribute) {
+      handleModifyAttribute(attributeName, !saveThrowBoolean);
+    }
+  },[saveThrowBoolean])
 
   const handleUpdateValue = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value, 10);
@@ -38,14 +53,14 @@ const InputAttributes: React.FC<InputFieldProps> = ({
       setInputValue(newValue);
     }
 
-    if (handleModifyAttribute) handleModifyAttribute(attributeName, inputValue);
+    // if (handleModifyAttribute) handleModifyAttribute(attributeName, inputValue);
   };
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSaveThrowBoolean(event.target.checked); // event.target.checked directly gives the new checked state
-    if (handleModifyAttribute) {
-      handleModifyAttribute(attributeName, !saveThrowBoolean); // Assuming save is a boolean, convert to 1 or 0
-    }
+    // if (handleModifyAttribute) {
+    //   handleModifyAttribute(attributeName, !saveThrowBoolean); // Assuming save is a boolean, convert to 1 or 0
+    // }
   };
 
   // (document.getElementById('attributeInput') as HTMLInputElement).addEventListener('keydown', (event:KeyboardEvent)=>{

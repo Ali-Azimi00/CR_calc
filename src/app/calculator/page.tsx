@@ -11,11 +11,15 @@ import {
   getModifier,
   getAvgDieRoll,
   defaultDefensiveInput,
-  Size,
+  generateBlankCrDisplay,
   generateDefultDefensiveOutput,
   getTotalHp,
   getHpString,
+  getProfByCR,
 } from "@/constants/MonsterStats";
+import {
+  Size,
+} from "@/constants/Constants";
 import { ChangeEvent, useState } from "react";
 
 
@@ -23,12 +27,27 @@ import CrTag from "@/components/CrTag"
 // import Dropdown from "@/components/Dropdown"
 //rafce
 const Calculator = () => {
-  const [proficiency, setProficiency] = useState(2);
+  const [crDisplay, setCrDisplay] = useState(generateBlankCrDisplay);
+  // const [proficiency, setProficiency] = useState(2);
+  const proficiency = crDisplay.prof ?? 2;
   const [attrInput, setAttrInput] = useState<AttributesInput>(defaultAttributesInput);
   const [attrOutput, setAttrOutput] = useState<AttributesOutput>(generateAttributesOutput(attrInput, proficiency));
   const [defInput, setDefInput] = useState(defaultDefensiveInput);
   const [defOutput, setDefOutput] = useState(generateDefultDefensiveOutput);
   type AttributeKey = keyof typeof attrInput;
+
+  //#region CR FUNCTIONS
+  function handleGoalCrChange(newGoalCr: number): void {
+    console.log(`New goal CR received: ${newGoalCr}`);
+    const newCrDisplay = {...crDisplay};
+    newCrDisplay.goalCr = newGoalCr;
+    newCrDisplay.prof = getProfByCR(newGoalCr);
+    setCrDisplay(newCrDisplay);
+    // setProficiency(getProfByCR(newGoalCr));
+    console.log(`Cr Display values: `,crDisplay);
+  }
+
+  //#endregion
 
   //#region ATTRIBUTES FUNCTIONS
   // function to handle attribute modification in InputAttributes component
@@ -57,21 +76,19 @@ const Calculator = () => {
   }
 
   //function to handle passive perception checkbox in Attributes component
-  const handlePassivePerceptionCheck = (
-    event: ChangeEvent<HTMLInputElement>
-  ) => {
+  const handlePassivePerceptionCheck = (event: boolean) => {
     const attributes = attrInput;
-    console.log("Passive Perception checked:", event.target.checked);
-    attributes.passPerc = event.target.checked;
+    console.log("Passive Perception checked:", event);
+    attributes.passPerc = event;
     setAttrInput(attributes);
     console.log("Attributes: ", attrInput);
   };
 
   // function to handle initiative checkbox in Attributes component
-  const handleInitiativeCheck = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleInitiativeCheck = (event: boolean) => {
     const attributes = attrInput;
-    console.log("Passive Perception checked:", event.target.checked);
-    attributes.initiative = event.target.checked;
+    console.log("Passive Perception checked:", event);
+    attributes.initiative = event;
     setAttrInput(attributes);
     console.log("Attributes: ", attrInput);
   };
@@ -80,9 +97,9 @@ const Calculator = () => {
 
   //#region DEFENSIVE FUNCTIONS
   function handleHpChange(newValue: number | Size) {
-    const newDefInput = { ...defInput };
+    const newDefInput = defInput;
     newDefInput.hpInput ??= { size: Size.Medium, hitDice: 1 };
-    const newDefOutput = { ...defOutput };
+    const newDefOutput = defOutput;
     newDefOutput.hpOutput ??= {};
     if (typeof newValue === 'number') {
       newDefInput.hpInput.hitDice = newValue;
@@ -100,7 +117,8 @@ const Calculator = () => {
         hpString: getHpString((newDefInput.hpInput.hitDice ?? 1), (newDefInput.hpInput.size ?? Size.Medium), (attrInput.CON?.value ?? 10)),
       }
     }
-
+    setDefInput(newDefInput);
+    setDefOutput(newDefOutput);
   }
 
 
@@ -127,7 +145,7 @@ const Calculator = () => {
 
       <div className="">
 
-        <CrTag />
+        <CrTag crDisplay={crDisplay} handleGoalCrChange={handleGoalCrChange}/>
 
         <div className="flex flex-wrap justify-center">
           <div className=" mb-4  justify-center min-w-100 max-w-[1000px] border-2 border-red-800">
