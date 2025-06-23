@@ -157,6 +157,7 @@ const Calculator = () => {
               handlePassivePerceptionCheck={handlePassivePerceptionCheck}
               handleInitiativeCheck={handleInitiativeCheck}
               handleTestValueChange={handleTestValueChange}
+              hpString={defOutput.hpOutput?.hpString}
             />
             {/* <button className="flex flex-row justify-around gap-1" onClick={handleTestValueChange}/> */}
           </div>

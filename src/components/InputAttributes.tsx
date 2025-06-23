@@ -13,6 +13,7 @@ interface InputFieldProps {
   attributeInputData?: AttrInput;
   attributeOutputData?: AttrOutput;
   proficiency?: number;
+  hpString?: string;
 }
 
 const InputAttributes: React.FC<InputFieldProps> = ({
@@ -23,6 +24,7 @@ const InputAttributes: React.FC<InputFieldProps> = ({
   attributeInputData,
   attributeOutputData,
   proficiency = 2,
+  hpString = "",
 }) => {
   const prof = proficiency ?? 2;
   const attributeName = placeholder || "";
@@ -124,7 +126,7 @@ const InputAttributes: React.FC<InputFieldProps> = ({
           >
             <div className="flex flex-row justify-between">
               <div>HP</div>
-              <div>000(00d + 000)</div>
+              <div>{hpString}</div>
             </div>
           </div>
         </div>

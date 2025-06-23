@@ -7,6 +7,7 @@ import { AttributesInput, AttributesOutput } from "../constants/MonsterStats";
 
 interface AttributesProps {
   proficiency?: number;
+  hpString?: string;
   attrInput?: AttributesInput;
   attrOutput?: AttributesOutput;
   handleModifyAttribute?: (attrName: string, newValue: number | boolean) => void;
@@ -17,6 +18,7 @@ interface AttributesProps {
 
 const Attributes: React.FC<AttributesProps> = ({
   proficiency,
+  hpString,
   attrInput,
   attrOutput,
   handleModifyAttribute,
@@ -83,6 +85,7 @@ const Attributes: React.FC<AttributesProps> = ({
           attributeInputData={attrInput ? attrInput[att as AttributeKey] : undefined}
           attributeOutputData={attrOutput ? attrOutput[att as AttributeKey] : undefined}
           proficiency={proficiency}
+          hpString={att === "CON" ? hpString : undefined}
         />
       </div>
     ));

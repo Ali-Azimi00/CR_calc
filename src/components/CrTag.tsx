@@ -85,7 +85,7 @@ const CrTag: React.FC<CrTagProps> = ({crDisplay, handleGoalCrChange}) => {
                             Def. CR
                         </div>
                         <div className='bg-gray-300  p-2 w-[30%] text-center'>
-                            {crDisplayData.defCr}
+                            {crDisplayData.defCr ?? '--'}
                         </div>
                     </div>
 
@@ -94,7 +94,7 @@ const CrTag: React.FC<CrTagProps> = ({crDisplay, handleGoalCrChange}) => {
                             Off. CR
                         </div>
                         <div className='bg-gray-300  p-2 w-[30%] text-center'>
-                            {crDisplayData.offCr}
+                            {crDisplayData.offCr ?? '--'}
                         </div>
                     </div>
                 </div>
