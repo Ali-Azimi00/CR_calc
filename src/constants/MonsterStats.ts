@@ -1,16 +1,18 @@
 import { Size } from "./Constants";
 
 export interface MonsterStatBlock {
-  attributes?: AttributesInput;
-  defensiveInput?: DefensiveInput;
-  offensiveInput?: OffensiveInput;
-  crDisplay?: string;
+    crDisplay?: CrDisplay;
+    attributes?: AttributesInput;
+    defensiveInput?: DefensiveInput;
+    offensiveInput?: OffensiveInput;
 }
 
 export interface CrDisplay{
-    cr?: string;
+    cr?: number;
     goalCr?: number;
     prof?: number;
+    defCr?: number;
+    offCr?: number;
 }
 
 export interface AttributesInput {
@@ -134,7 +136,7 @@ export function getHpString(hitDice: number, size: Size, CON: number): string {
 
 export function generateBlankCrDisplay(): CrDisplay {
     return {
-        cr: "--",
+        cr: 0,
         goalCr: 0,
         prof: 2,
     }
