@@ -97,9 +97,9 @@ const Calculator = () => {
 
   //#region DEFENSIVE FUNCTIONS
   function handleHpChange(newValue: number | Size) {
-    const newDefInput = { ...defInput };
+    const newDefInput = defInput;
     newDefInput.hpInput ??= { size: Size.Medium, hitDice: 1 };
-    const newDefOutput = { ...defOutput };
+    const newDefOutput = defOutput;
     newDefOutput.hpOutput ??= {};
     if (typeof newValue === 'number') {
       newDefInput.hpInput.hitDice = newValue;
@@ -117,7 +117,8 @@ const Calculator = () => {
         hpString: getHpString((newDefInput.hpInput.hitDice ?? 1), (newDefInput.hpInput.size ?? Size.Medium), (attrInput.CON?.value ?? 10)),
       }
     }
-
+    setDefInput(newDefInput);
+    setDefOutput(newDefOutput);
   }
 
 
